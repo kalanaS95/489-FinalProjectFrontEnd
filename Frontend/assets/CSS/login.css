@@ -1,0 +1,47 @@
+body, html {
+    /* The image used */
+    background-image: url("../images/loginBackground.jpg");
+    margin: 0;
+
+
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  }
+
+
+#container_{
+
+	height: 50%;
+
+	z-index: 9999;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	
+	margin: auto;
+
+}
+
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: right;
+  color:white;
+  margin-bottom:10px;
+  padding-right:10px;
+}
+
+  
