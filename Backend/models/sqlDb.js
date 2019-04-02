@@ -5,7 +5,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     database: 'iStats',
     user: 'root',
-    password: 'Huskyyoungwoo1'
+    password: 'postgres'
 });
 
 //Make connection

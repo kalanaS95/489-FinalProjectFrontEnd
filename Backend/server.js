@@ -3,6 +3,8 @@ var app = express(); //instantiate an express app.\
 var bodyParser = require('body-parser'); //bodyParser helps us to parse the bodies of incoming requests
 var port = process.env.PORT || 3000; //create a port for listening for requests...
 
+console.log(process.env.PORT);
+
 app.use(bodyParser.urlencoded({extended: true})); //init body parser
 app.use(bodyParser.json());
 
