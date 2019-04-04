@@ -1,4 +1,4 @@
 function authenticate()
 {
-    window.location.replace('mainpage.html');
+    window.location.replace('html/mainpage.html');
 }
