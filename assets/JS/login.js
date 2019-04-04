@@ -1,6 +1,6 @@
 function authenticate(googleUser)
 {
-    window.location.replace('html/mainpage.html');
+    //window.location.replace('html/mainpage.html');
 
     var profile = googleUser.getBasicProfile();
     console.log(profile);
