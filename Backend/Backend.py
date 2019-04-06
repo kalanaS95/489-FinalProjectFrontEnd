@@ -24,29 +24,23 @@ class Teams(db.Model):
     managerEmail = db.Column(db.String(50))
     players = db.relationship('Players', backref='team')
 
+
 # Creating a table for each player, including the primary key
 # playerID, the player number, and a reference to the
 # player's teamID
-
-
 class Players(db.Model):
     __tablename__ = 'Players'
     playerID = db.Column(db.Integer, primary_key=True)
-    playerNumber = db.Column(db.Integer)
+    playerNumber = db.Column(db.Integer, default = 0)
+    playerName = db.Column(db.String(50))
     team_id = db.Column(db.Integer, db.ForeignKey(Teams.teamID))
     games = db.relationship('Games',backref='player')
-    # teamID= db.relationship('Teams', backref = 'Players', lazy = T rue)          #???
 
 
 # Creating a table for each game, including foreign key
 # references to a player ID and their corresponding team ID,
 # along with all statistical information such as
 # points, rebounds, assists, shooting numbers, etc.
-
-
-
-    #playerID = db.relationship('Players', backref='Games', lazy=True)  # ???
-    #teamID = db.relationship('Teams', backref='Games', lazy=True)  # ???
 class Games(db.Model):
     __tablename__ = 'Games'
     gameID = db.Column(db.Integer, primary_key=True)
@@ -76,6 +70,7 @@ base_url = '/api/'
 # ***********Web API routes**************
 
 
+
 @app.route(base_url+'addTeam', methods=['POST'])
 def addTeam():
     teamName = request.get_json().get('teamName')
@@ -85,15 +80,30 @@ def addTeam():
 
     db.session.add(newTeam)
     db.session.commit()
-
     db.session.refresh(newTeam)
 
     return jsonify({"Team Name": teamName, "Manager": managerEmail, "Success": True}), 200
 
 
+
+
+@app.route(base_url+'addPlayer', methods=['POST'])
+def addPlayer():
+    playerNumber = request.get_json().get('playerNumber')
+    playerName = request.get_json().get('playerName')
+    team_id = request.get_json().get('teamID')
+    
+    newPlayer = Players(playerName=playerName, playerNumber=playerNumber, team_id=team_id)
+
+    db.session.add(newPlayer)
+    db.session.commit()
+    db.session.refresh(newPlayer)
+
+    return jsonify({"Player Name": playerName, "Player Number": playerNumber, "Team ID":team_id, "Success": True}), 200
+
 def main():
-    db.create_all()  # Creates the established tables
-    app.run()  # Runs the Flask application
+    db.create_all()     #Creates the established tables
+    app.run()           #Runs the Flask application
 
 
 if __name__ == '__main__':
