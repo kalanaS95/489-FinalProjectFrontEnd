@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>IStats | Sign Up</title>
+    <!--Google API Key-->
+    <meta name="google-signin-client_id"
+    content="582903321253-ftsq8n0a06v7qu4snejqqoh2t6qhq6o9.apps.googleusercontent.com">
 
     <!-- CSS imports-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -25,7 +28,8 @@
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
                 </div>
                 <div class="text-center" style="padding-bottom:50px; margin-top:20px;">
-                <button type="button" class="text-center btn btn-primary btn-lg"><i class="fab fa-google"> </i> Signup with Google</button>
+                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="300" data-height="50"
+                    data-longtitle="true">button</div>
                 </div>
                 </div>
             </form>
@@ -43,6 +47,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="assets/JS/signup.js"></script>
+    <!--google API-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </body>
 

@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>IStats | Login</title>
-
+    <!--goole Auth client ID-->
+    <meta name="google-signin-client_id"
+        content="582903321253-ftsq8n0a06v7qu4snejqqoh2t6qhq6o9.apps.googleusercontent.com">
     <!-- CSS imports-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -16,7 +18,9 @@
 <body>
     <div id="container_" class="text-center">
         <img src="assets/images/istatLogo.png" class="rounded mx-auto d-block" alt="..." width="500px" height="300px">
-        <button id="loginBtn" type="button" class="btn btn-primary btn-lg " onclick="authenticate()"><i class="fab fa-google"> </i> Login with Google</button>
+        <!--<button id="loginBtn" type="button" class="btn btn-primary btn-lg " onclick="authenticate()"><i class="fab fa-google"> </i> Login with Google</button>-->
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="300" data-height="50"
+            data-longtitle="true">button</div>
     </div>
 
     <div class="footer">
@@ -24,6 +28,8 @@
     </div>
 
     <!--Scripts-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -34,6 +40,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="assets/JS/login.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </body>
 

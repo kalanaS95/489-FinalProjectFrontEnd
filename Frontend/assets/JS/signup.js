@@ -1,12 +1,4 @@
 
-//saving items in local storage
-window.localStorage.setItem("")
-
-function authenticate()
-{
-    //window.location.replace('html/mainpage.html');
-
-}
 
 function onSignIn(googleUser) {
     // Useful data for your client-side scripts:
