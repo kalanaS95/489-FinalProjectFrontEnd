@@ -93,6 +93,11 @@ def addPlayer():
     playerName = request.get_json().get('playerName')
     team_id = request.get_json().get('teamID')
     
+    playerCheck = Players.query.filter_by(playerName=playerName).first();
+
+    if(playerCheck!=None):
+        return jsonify({"Success": 0}), 200
+
     newPlayer = Players(playerName=playerName, playerNumber=playerNumber, team_id=team_id)
 
     db.session.add(newPlayer)
