@@ -79,7 +79,7 @@ def addTeam():
     teamCheck = Teams.query.filter_by(teamName=teamName).first();
 
     if(teamCheck!=None):
-        return jsonify({"Success": False}), 200
+        return jsonify({"Success": False,"Error Message":"Duplicate team name"}), 200
 
 
     newTeam = Teams(teamName=teamName, managerEmail=managerEmail)
@@ -102,7 +102,16 @@ def addPlayer():
     playerCheck = Players.query.filter_by(playerName=playerName).first();
 
     if(playerCheck!=None):
-        return jsonify({"Success": False}), 200
+        return jsonify({"Success": False,"Error Message":"Duplicate player name"}), 200
+
+    jerseyCheck = Players.query.filter_by(playerNumber=playerNumber).first();
+    if(jerseyCheck!=None):
+        return jsonify({"Success": False,"Error Message":"Duplicate player number"}), 200
+
+    teamCheck = Teams.query.filter_by(teamID=team_id).first();
+
+    if(teamCheck==None):
+        return jsonify({"Success": False,"Error Message":"Team ID does not exist"}), 200
 
     newPlayer = Players(playerName=playerName, playerNumber=playerNumber, team_id=team_id)
 
