@@ -52,7 +52,7 @@ class Game(db.Model):
 # points, rebounds, assists, shooting numbers, etc.
 class GameStats(db.Model):
     __tablename__ = 'GameStats'
-    gameID = db.Column(db.Integer, primary_key=True)
+    recordID = db.Column(db.Integer, primary_key=True)
     player_id = db.Column(db.Integer, db.ForeignKey(Players.playerID))
     mygame_id = db.Column(db.Integer, db.ForeignKey(Game.gameID))
     points = db.Column(db.Integer)
