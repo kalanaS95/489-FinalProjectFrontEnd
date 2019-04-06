@@ -76,6 +76,12 @@ def addTeam():
     teamName = request.get_json().get('teamName')
     managerEmail = request.get_json().get('managerEmail')
 
+    teamCheck = Teams.query.filter_by(teamName=teamName).first();
+
+    if(teamCheck!=None):
+        return jsonify({"Success": False}), 200
+
+
     newTeam = Teams(teamName=teamName, managerEmail=managerEmail)
 
     db.session.add(newTeam)
@@ -96,7 +102,7 @@ def addPlayer():
     playerCheck = Players.query.filter_by(playerName=playerName).first();
 
     if(playerCheck!=None):
-        return jsonify({"Success": 0}), 200
+        return jsonify({"Success": False}), 200
 
     newPlayer = Players(playerName=playerName, playerNumber=playerNumber, team_id=team_id)
 
