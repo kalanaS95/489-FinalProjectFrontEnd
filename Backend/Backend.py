@@ -34,13 +34,14 @@ class Players(db.Model):
     playerNumber = db.Column(db.Integer, default = 0)
     playerName = db.Column(db.String(50))
     team_id = db.Column(db.Integer, db.ForeignKey(Teams.teamID))
-    games = db.relationship('Games',backref='player')
+    games = db.relationship('GameStats',backref='player')
 
 
 class Game(db.Model):
     __tablename__ = 'Game'
     gameID = db.Column(db.Integer, primary_key=True)
-    gameDay = db.Column(db.String(15))
+    gameDay = db.Column(db.Date)
+    gamestats = db.relationship('GameStats',backref='mygame')
     
 
 
@@ -49,10 +50,11 @@ class Game(db.Model):
 # references to a player ID and their corresponding team ID,
 # along with all statistical information such as
 # points, rebounds, assists, shooting numbers, etc.
-class Games(db.Model):
-    __tablename__ = 'Games'
+class GameStats(db.Model):
+    __tablename__ = 'GameStats'
     gameID = db.Column(db.Integer, primary_key=True)
     player_id = db.Column(db.Integer, db.ForeignKey(Players.playerID))
+    mygame_id = db.Column(db.Integer, db.ForeignKey(Game.gameID))
     points = db.Column(db.Integer)
     FGMade = db.Column(db.Integer)
     FGAttempted = db.Column(db.Integer)
@@ -84,6 +86,9 @@ def addGame():
     gameDay = request.get_json().get("Date")
     day = gameDay.split('-')
     myDate = datetime(int(day[0]),int(day[2]),int(day[1]))
+    #dateCheck = Game.query.filter_by(gameDay=myDate).first();
+    #if(dateCheck!=None):
+    #    return jsonify({"Success": False,"Error Message":"Duplicate game day"}), 200
     newGame = Game(gameDay=myDate)
     db.session.add(newGame)
     db.session.commit()
